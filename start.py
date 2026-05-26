@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-# ^ This is a shebang that essentially tells Linux devices what to run this script with
-# The line is ignored unless directly executed in the shell (`./PS3RPD.py`)
-import subprocess  # used for running uv installer and PS3RPD script
-import sys  # used for exiting the program with proper exit codees # to check path for "uv"
-import shutil  # to check path for "uv" and "curl"
+import shutil
+import subprocess
+import sys
 
 
 def ask_install_uv():
@@ -14,11 +12,9 @@ def ask_install_uv():
     if choice == "y":
         if shutil.which("curl") is None:
             print("`curl` not found, cannot run command")
-            # NOTE: Assumes that users are using a Debian based distribution.
-            # If they are not and try to run this command, it will fail.
-            # To improve UX, the script could check and print a command based on distro.
             print(
-                "Please install curl with `sudo apt-get install curl -y` before running again"
+                "Please install curl with `sudo apt-get install curl -y` "
+                "before running again"
             )
             sys.exit(1)
         try:
@@ -36,21 +32,13 @@ def ask_install_uv():
         sys.exit(1)
 
 
-def run_with_uv():
-    # Run current script via uv to manage dependencies
-    args = ["uv", "run", "--script", "./PS3RPD.py"]
-    try:
-        subprocess.check_call(args)
-    except Exception as e:
-        print(f"Failed to run script with uv: {e}")
-        sys.exit(1)
-
-
 def main():
     if shutil.which("uv") is None:
         ask_install_uv()
     else:
-        run_with_uv()
+        from ps3rpd.__main__ import main as run
+
+        run()
 
 
 if __name__ == "__main__":
