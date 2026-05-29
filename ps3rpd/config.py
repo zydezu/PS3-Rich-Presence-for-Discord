@@ -14,7 +14,7 @@ from requests.exceptions import ConnectionError
 default_config = {
     "ip": "",
     "client_id": 780389261870235650,
-    "wait_seconds": 35,
+    "wait_seconds": 30,
     "show_temp": True,
     "retro_covers": False,
     "show_elapsed": True,

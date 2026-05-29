@@ -36,7 +36,7 @@ Display what game you are playing on PS3 via your PC!
 * PS3 and PC on the same network/internet connection
 * Discord installed and open on the PC running the script
 * Administrator permissions on the PC
-* A Python 3.9 interpreter installed on the PC if you do not wish to use the executable file
+* A Python 3.9 interpreter installed on the PC if you aren't using the .exe
 
 ### Windows
 * [version 1.9.7 .exe](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPD.exe)
@@ -111,15 +111,10 @@ For more depth logs you can use `journalctl --user -xeu ps3rpd`
 
 ## Limitations
 * __A PC must be used to display presence, there is no way to install and use this script solely on the PS3__
-* The script relies on webmanMOD, and a major change to it will break this script, please message me about updated versions of webman so that i can test the script with them
+* The script relies on webmanMOD, and a major change to it will break this script, please submit a bug report when this happens about the updated version of webman so the script can be updated
 * PSX and PS2 game name depends on the name of the file
 * PSX and PS2 game detection will **not** work on PSN .pkg versions because webman cannot show those games as mounted/playing.
 * PS2 ISO game detection can be inconsistent, varying on degree of consistency by the value of "Refresh time."
-* Using Windows 7 is only possible with up to PS3RPD version 1.7.2
-	- If you want to use a .exe, [here](https://www.mediafire.com/file/ezzlcemhkmnmyn2/PS3RPD.exe/file) is a version that may or may not fully function (very little bug testing has been done)
-
-## Contact Me
-Contact me via Discord: `zorua98741`/`zorua98741#0023`.
 
 ## Additional Information
 
@@ -127,13 +122,16 @@ Contact me via Discord: `zorua98741`/`zorua98741#0023`.
 This script can utilise images provided by [GameTDB](https://www.gametdb.com/), if you are able, consider supporting the service.
 
 ### External config file
-PS3RPD makes use of an external config file to persistently store a few variables, on creation, the default values will be:
-* Your PS3's IP address 	(where the script will find your PS3 on the network)
-* My Discord developer application's ID 		(where the script will send presence data to)
-* A refresh time of 35 seconds 					(how often to get new data (minimum value of 15 seconds)
+PS3RPD makes use of an external config file named `ps3rpdconfig.json` to persistently store a few variables. 
+
+On creation, the default values will be:
+* Your PS3's IP address (where the script will find your PS3 on the network)
+* My Discord developer application's ID (where the script will send presence data to)
+* A refresh time of 30 seconds (how often to get new data (minimum value of 15 seconds)
 * To show the PS3's temperature
 * To use a shared cover for PS2&PSX games
 * To display the time elapsed
+* To only show the presence when playing a game
 
 ### Using your own images
 If you'd like to control what images are used for each game, you must create a Discord Developer Application over at the [Discord Developer Portal](https://discord.com/developers/applications).
