@@ -103,30 +103,13 @@ jobs:
           mkdir -p releases
           [ -d windows ] && mkdir -p releases/windows && cp windows/* releases/windows/ || true
           [ -d linux ] && mkdir -p releases/linux && cp linux/* releases/linux/ || true
-      - name: Create artifact tarball
-        id: tar
-        run: |
-          mkdir -p all_artifacts
-          [ -f releases/windows/PS3RPD_Windows_x64.exe ] && cp releases/windows/PS3RPD_Windows_x64.exe all_artifacts/ || true
-          [ -f releases/linux/PS3RPD_Linux_x64 ] && cp releases/linux/PS3RPD_Linux_x64 all_artifacts/ || true
-          if ls all_artifacts/* 1> /dev/null 2>&1; then
-            tar -cjf all-artifacts.tar.bz2 -C all_artifacts .
-            echo "artifact_exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "artifact_exists=false" >> $GITHUB_OUTPUT
-          fi
-      - name: Publish all-artifacts tarball
-        if: steps.tar.outputs.artifact_exists == 'true'
-        uses: actions/upload-artifact@v7
-        with:
-          name: all-artifacts
-          path: all-artifacts.tar.bz2
       - name: Set release metadata
         run: |
           echo "REPOSITORY_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
           echo "DATETIME=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
+      - name: List files
+        run: ls -la releases/windows/ releases/linux/ || true
       - name: Create release
-        if: steps.tar.outputs.artifact_exists == 'true'
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.REPOSITORY_NAME }}-${{ env.DATETIME }}
@@ -134,4 +117,6 @@ jobs:
           prerelease: true
           generate_release_notes: true
           name: Nightly-${{ env.REPOSITORY_NAME }}-${{ env.DATETIME }}
-          files: all-artifacts.tar.bz2
+          files: |
+            releases/windows/PS3RPD_Windows_x64.exe
+            releases/linux/PS3RPD_Linux_x64
