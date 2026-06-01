@@ -3,8 +3,8 @@ from time import sleep, time
 
 from pypresence import InvalidPipe, InvalidID
 
-from ps3rpd.config import PrepWork, headers, _THERMAL_RE
-from ps3rpd.scraper import GatherDetails
+from ps3rpc.config import PrepWork, headers, _THERMAL_RE
+from ps3rpc.scraper import GatherDetails
 
 
 def main():

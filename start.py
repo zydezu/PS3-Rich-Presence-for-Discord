@@ -36,7 +36,7 @@ def main():
     if shutil.which("uv") is None:
         ask_install_uv()
     else:
-        from ps3rpd.__main__ import main as run
+        from ps3rpc.__main__ import main as run
 
         run()
 

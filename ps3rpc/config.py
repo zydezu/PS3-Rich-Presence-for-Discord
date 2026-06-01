@@ -37,7 +37,7 @@ _THERMAL_RE = re.compile(r"Â")
 
 
 class PrepWork:
-    config_path = Path("ps3rpdconfig.txt")
+    config_path = Path("ps3rpcconfig.txt")
 
     def __init__(self):
         self.RPC = None

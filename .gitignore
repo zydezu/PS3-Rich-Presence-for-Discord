@@ -1,10 +1,10 @@
 config.json
-ps3rpdconfig.json
+ps3rpcconfig.json
 config.txt
-ps3rpdconfig.txt
+ps3rpcconfig.txt
 build/
 .idea
-PS3RPD.spec
+PS3RPC.spec
 icon.ico
 logo.png
 __pycache__

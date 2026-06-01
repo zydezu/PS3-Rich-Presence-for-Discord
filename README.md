@@ -39,13 +39,13 @@ Display what game you are playing on PS3 via your PC!
 * A Python 3.9 interpreter installed on the PC if you aren't using the .exe
 
 ### Windows
-* [version 1.9.7 .exe](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPD.exe)
+* [version 1.9.7 .exe](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPC.exe)
 or
-* [version 1.9.7 .py](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPD.py)
+* [version 1.9.7 .py](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPC.py)
 
 #### Installing as a Windows service (optional)
-Download [NSSM](https://nssm.cc/release/nssm-2.24.zip) and run `nssm install <service name ie. ps3rpd>` to install PS3RPD as a Windows service.
-WARNING: PS3RPD.exe must be in a location that won't change ie. C:\ps3rpd\PS3RPD.exe
+Download [NSSM](https://nssm.cc/release/nssm-2.24.zip) and run `nssm install <service name ie. ps3rpc>` to install PS3RPC as a Windows service.
+WARNING: PS3RPC.exe must be in a location that won't change ie. C:\ps3rpc\PS3RPC.exe
 
 > [!NOTE]
 > The executable file will very likely be flagged as a virus on your computer due to `pyinstaller` being used to compile it.
@@ -95,18 +95,18 @@ WorkingDirectory=$HOME/ps3-rich-presence
 
 [Install]
 WantedBy=default.target
-" > ~/.config/systemd/user/ps3rpd.service'
+" > ~/.config/systemd/user/ps3rpc.service'
 # Reloads the systemd service to recognize the new service
 systemctl --user daemon-reload
 # Enables the service and starts it
-systemctl --user enable --now ps3rpd
+systemctl --user enable --now ps3rpc
 # Make it clear that something happened
-echo "Finished adding user service for ps3rpd."
-echo "You can check the status of the service with `systemctl --user status ps3rpd`"
+echo "Finished adding user service for ps3rpc."
+echo "You can check the status of the service with `systemctl --user status ps3rpc`"
 ```
 
-In order to check the health of the service, you can run `systemctl --user status ps3rpd`<br>
-For more depth logs you can use `journalctl --user -xeu ps3rpd`
+In order to check the health of the service, you can run `systemctl --user status ps3rpc`<br>
+For more depth logs you can use `journalctl --user -xeu ps3rpc`
 </details>
 
 ## Limitations
@@ -122,7 +122,7 @@ For more depth logs you can use `journalctl --user -xeu ps3rpd`
 This script can utilise images provided by [GameTDB](https://www.gametdb.com/), if you are able, consider supporting the service.
 
 ### External config file
-PS3RPD makes use of an external config file named `ps3rpdconfig.json` to persistently store a few variables. 
+PS3RPC makes use of an external config file named `ps3rpcconfig.json` to persistently store a few variables. 
 
 On creation, the default values will be:
 * Your PS3's IP address (where the script will find your PS3 on the network)
@@ -136,7 +136,7 @@ On creation, the default values will be:
 ### Using your own images
 If you'd like to control what images are used for each game, you must create a Discord Developer Application over at the [Discord Developer Portal](https://discord.com/developers/applications).
 
-Once created, copy the application ID from the Developer Portal and paste it into the external `ps3rpdconfig.json`, replacing the value of `client_id`.
+Once created, copy the application ID from the Developer Portal and paste it into the external `ps3rpcconfig.json`, replacing the value of `client_id`.
 
 You are now able to upload your own assets in the Developer Portal under `Rich Presence > Art Assets`. Note that the name of the asset uploaded must be the lowercase title ID provided in the script's output. (e.g. `abcd12345`)
 

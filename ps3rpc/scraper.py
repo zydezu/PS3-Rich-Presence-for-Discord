@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError
 
-from ps3rpd.config import _PS2_RE, _PSX_RE, _RETRO_LINK_RE, _VERSION_RE, headers
+from ps3rpc.config import _PS2_RE, _PSX_RE, _RETRO_LINK_RE, _VERSION_RE, headers
 
 
 class GatherDetails:
@@ -59,7 +59,7 @@ class GatherDetails:
             self.thermalData = f"{cpu.group(0)} | {rsx.group(0)}"
             print(f"get_thermals():     {self.thermalData}")
         else:
-            from ps3rpd.config import wmanVer
+            from ps3rpc.config import wmanVer
 
             print(
                 f"get_thermals(): could not find html for thermal data, "
@@ -142,7 +142,7 @@ class GatherDetails:
             return self.titleID.lower()
         url = f"https://art.gametdb.com/ps3/cover/{region_code}/{self.titleID}.jpg"
         try:
-            resp = self.session.get(url, headers={"User-Agent": "PS3RPD/1.9.7"})
+            resp = self.session.get(url, headers={"User-Agent": "PS3RPC/1.9.7"})
             if resp.status_code == 200:
                 print("using GameTDB")
                 return url
