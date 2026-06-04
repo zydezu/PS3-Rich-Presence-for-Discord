@@ -79,12 +79,13 @@ def main():
                 "large_text": large_text,
                 "start": timer,
             }
+            temp_line = gatherDetails.thermalData if prepWork.config["show_temp"] else None
             if prepWork.config["use_appname"]:
                 rpc_kwargs["details"] = gatherDetails.name
-                rpc_kwargs["state"] = gatherDetails.thermalData or playing_on
+                rpc_kwargs["state"] = temp_line or playing_on
             else:
                 rpc_kwargs["name"] = gatherDetails.name
-                rpc_kwargs["details"] = gatherDetails.thermalData
+                rpc_kwargs["details"] = temp_line
                 rpc_kwargs["state"] = playing_on
 
             try:
