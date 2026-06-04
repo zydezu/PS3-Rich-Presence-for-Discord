@@ -34,6 +34,7 @@ _PS2_RE = re.compile(r"/(dev_hdd0|dev_usb00[0-9])/PS2ISO")
 _RETRO_LINK_RE = re.compile(r'">(.*)</a>')
 _VERSION_RE = re.compile(r"(.+)\d{2}\.\d{2}")
 _THERMAL_RE = re.compile(r"Â")
+_GOOGLE_SEARCH_RE = re.compile(r"google\.com/search\?q=([^\"&]+)")
 
 
 class PrepWork:

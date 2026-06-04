@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError
 
-from ps3rpc.config import _PS2_RE, _PSX_RE, _RETRO_LINK_RE, _VERSION_RE, headers
+from ps3rpc.config import _GOOGLE_SEARCH_RE, _PS2_RE, _PSX_RE, _RETRO_LINK_RE, _VERSION_RE, headers
 
 
 class GatherDetails:
@@ -89,15 +89,24 @@ class GatherDetails:
 
     def get_PS3_details(self):
         title_tag = self.soup.find("a", target="_blank")
-        name_tag = title_tag.find_next_sibling()
-        if title_tag is None or name_tag is None:
+        if title_tag is None:
             return
         titleID = title_tag.get_text(strip=True)
-        name = name_tag.get_text(strip=True)
-        name = _VERSION_RE.sub("", name) if _VERSION_RE.search(name) else name
+        name = ""
+        name_tag = title_tag.find_next_sibling()
+        if name_tag is not None:
+            name = name_tag.get_text(strip=True)
+            name = _VERSION_RE.sub(r"\1", name).strip() if _VERSION_RE.search(name) else name
+        if not name:
+            google_tag = self.soup.find("a", href=_GOOGLE_SEARCH_RE)
+            if google_tag is not None:
+                match = _GOOGLE_SEARCH_RE.search(google_tag.get("href", ""))
+                if match:
+                    name = match.group(1)
+                    print(f"get_PS3_details():  name from search link: {name}")
         self.name = name or titleID
         self.titleID = titleID
-        print(f"get_PS3_details():  {titleID} | {name}")
+        print(f"get_PS3_details():  {titleID} | {self.name}")
         if self._prev_title != titleID:
             self.get_PS3_image()
             self._prev_title = titleID
