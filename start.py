@@ -9,13 +9,20 @@ def ask_install_uv():
     print("uv package manager is not installed.")
     if platform.system().lower() == "windows":
         print("uv can be installed via PowerShell with the following command:")
-        print('powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"')
+        print(
+            'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"'
+        )
         choice = input("Would you like to run it now? [y/N]: ").strip().lower()
         if choice == "y":
             try:
                 subprocess.check_call(
-                    ["powershell", "-ExecutionPolicy", "ByPass", "-c",
-                     "irm https://astral.sh/uv/install.ps1 | iex"]
+                    [
+                        "powershell",
+                        "-ExecutionPolicy",
+                        "ByPass",
+                        "-c",
+                        "irm https://astral.sh/uv/install.ps1 | iex",
+                    ]
                 )
                 print("uv installed successfully.")
                 print("Please restart your terminal and run the script again.")
@@ -43,7 +50,9 @@ def ask_install_uv():
                     ["sh", "-c", "curl -LsSf https://astral.sh/uv/install.sh | sh"]
                 )
                 print("uv installed successfully.")
-                print("Please reload your shell (`exec $SHELL`) and run the script again.")
+                print(
+                    "Please reload your shell (`exec $SHELL`) and run the script again."
+                )
                 sys.exit(0)
             except Exception as e:
                 print(f"Installation failed: {e}")
@@ -56,11 +65,13 @@ def ask_install_uv():
 def main():
     if getattr(sys, "frozen", False):
         from ps3rpc.__main__ import main as run
+
         run()
     elif shutil.which("uv") is None:
         ask_install_uv()
     else:
         from ps3rpc.__main__ import main as run
+
         run()
 
 
