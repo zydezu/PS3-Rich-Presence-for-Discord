@@ -4,28 +4,7 @@ Discord Rich Presence script for PS3 consoles on HFW&HEN or CFW.
 Display what game you are playing on PS3 via your PC!
 
 ## Display Example
-<table>
-	<tr>
-		<th></th>
-		<th>AppName (original style)</th>
-		<th>GameName (new style)</th>
-	</tr>
-	<tr>
-		<td>XMB</td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/xmb.png?raw=true"> </td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/xmb2025.png?raw=true"></td>
-	</tr>
-	<tr>
-		<td>PS3</td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/ps3.png?raw=true"> </td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/ps32025.png?raw=true"></td>
-	</tr>
-	<tr>
-		<td>PS1/2</td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/retro.png?raw=true"> </td>
-		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/retro2025.png?raw=true"></td>
-	</tr>
-</table>
+<img src="https://github.com/zydezu/PS3-RPC/blob/main/img/default.png?raw=true">
 
 
 ## Usage

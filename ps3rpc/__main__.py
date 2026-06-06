@@ -62,12 +62,13 @@ def main():
                 sleep(prepWork.config["wait_seconds"])
                 continue
 
+            console = "PS3" if prepWork.config["short_console_name"] else "PlayStation®3 system"
             if gatherDetails.isRetroGame:
-                playing_on = "Playing PS1/2 on PlayStation®3 system"
+                playing_on = f"Playing PS1/2 on {console}"
             elif gatherDetails.isInGame:
-                playing_on = "Playing on PlayStation®3 system"
+                playing_on = f"Playing on {console}"
             else:
-                playing_on = "On PlayStation®3 XMB"
+                playing_on = f"On {console} XMB"
 
             if prepWork.config["temp_on_tooltip"]:
                 large_text = gatherDetails.thermalData or gatherDetails.titleID

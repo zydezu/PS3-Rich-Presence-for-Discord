@@ -23,6 +23,7 @@ default_config = {
     "show_timer": True,
     "prefer_dev_app": False,
     "use_appname": False,
+    "short_console_name": True,
     "show_only_in_game": True,
     "temp_on_tooltip": True,
 }
